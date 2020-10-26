@@ -1,0 +1,16 @@
+{% extends "codes/layout.html" %}
+
+{% block body %}
+    {% if  not codes %}
+        <li>No saved codes</li>
+    {% endif %}
+
+        {% for code in codes%}
+        <div>
+            <a href="../{{code.name}}">{{code}}</a>
+        </div>
+            
+        {% endfor %}
+    <br><br>
+    <a href="/">Back to Home</a>
+{% endblock %}

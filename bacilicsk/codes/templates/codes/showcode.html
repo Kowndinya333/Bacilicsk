@@ -1,0 +1,10 @@
+{% extends "codes/layout.html" %}
+
+{% block body %}
+    <h1>{{name}}</h1>
+
+    <textarea rows="30" cols="100">{{code}}</textarea>
+
+    <br>
+    <a href="{% url 'codes:mycodes' %}">Back to My Codes</a>
+{% endblock %}

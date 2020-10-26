@@ -1,0 +1,24 @@
+{% extends "codes/layout.html" %}
+
+{% block body %}
+    <h1>Happy Coding {{request.user.first_name}}</h1>
+
+    <form action="{% url 'codes:codesave' %}" method="POST">
+        {% csrf_token %}
+        <label>Select Programming language</label><br>
+        <input type="radio" name="lang" value="C" id="C">
+        <label for="C">C++</label>
+        <input type="radio" name="lang" value="P" id="P">
+        <label for="P">Python</label>
+        <input type="radio" name="lang" value="J" id="J">
+        <label for="J">Java</label> 
+        <br>
+        <textarea rows="30" cols="100" name="codetext">Code here</textarea><br>
+        <label>Save as</label>
+        <input type="text" name="saveas">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'users:index' %}">Back to Home</a>
+{% endblock %}
