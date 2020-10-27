@@ -43,3 +43,14 @@ def delete_file(request, file):
     return render(request, "codes/allcodes.html",{
         "codes":codes
     })
+
+def update_file(request, file):
+    if request.method=="POST":
+        new_code=request.POST["new_code"]
+        code=Code.objects.get(coder=request.user, name=file)
+        code.code=new_code
+        code.save()
+        codes=Code.objects.all().filter(coder=request.user)
+        return render(request, "codes/allcodes.html",{
+            "codes":codes
+        })

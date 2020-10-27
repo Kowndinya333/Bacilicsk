@@ -3,8 +3,10 @@
 {% block body %}
     <h1>{{name}}</h1>
 
-    <textarea rows="30" cols="100">{{code}}</textarea>
-
-    <br>
+    <form action="../update/{{name}}", method="POST">
+        {% csrf_token %}
+        <textarea rows="30" cols="100" name="new_code">{{code}}</textarea><br>
+        <button type="submit">Save</button>
+    </form>
     <a href="{% url 'codes:mycodes' %}">Back to My Codes</a>
 {% endblock %}

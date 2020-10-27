@@ -7,5 +7,6 @@ urlpatterns=[
     path('savecode/',views.save_code, name="codesave"),
     path('mycodes/', views.view_codes, name="mycodes"),
     path('show/<str:file>', views.show_file, name="show_file"),
-    path('delete/<str:file>', views.delete_file, name="delete_file")
+    path('delete/<str:file>', views.delete_file, name="delete_file"),
+    path('update/<str:file>', views.update_file, name="update_file")
 ]
