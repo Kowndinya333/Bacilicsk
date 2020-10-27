@@ -7,7 +7,8 @@
 
         {% for code in codes%}
         <div>
-            <a href="../{{code.name}}">{{code}}</a>
+            <a href="../show/{{code.name}}">{{code}}</a> 
+            <a href="../delete/{{code.name}}">Delete</a>
         </div>
             
         {% endfor %}

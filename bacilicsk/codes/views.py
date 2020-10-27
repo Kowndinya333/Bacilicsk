@@ -36,3 +36,10 @@ def show_file(request, file):
         "code": code.code,
         "name": code.name
     })
+
+def delete_file(request, file):
+    Code.objects.get(coder=request.user, name=file).delete()
+    codes=Code.objects.all().filter(coder=request.user)
+    return render(request, "codes/allcodes.html",{
+        "codes":codes
+    })
