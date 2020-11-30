@@ -1,0 +1,17 @@
+{% extends 'common/layout.html' %}
+
+{% block body %}
+    <h1>See the saved codes over here!</h1>
+
+    {% if  not codes %}
+        <li>No saved codes</li>
+    {% endif %}
+
+    {% for code in codes%}
+        <div>
+            <a href="../showcode/{{code.name}}">{{code}}</a> 
+            <a href="../deletecode/{{code.name}}">Delete</a>
+        </div>
+            
+    {% endfor %}
+{% endblock body %}

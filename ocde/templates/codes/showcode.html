@@ -1,0 +1,32 @@
+{% extends "common/layout.html" %}
+
+{% block body %}
+    <h1>{{name}}</h1>
+
+    <form action="../updatecode/{{name}}" method="POST">
+        {% csrf_token %}
+        
+        <textarea rows="30" cols="100" name="codetext">{{code}}</textarea><br>
+        
+        <button type="submit">Save</button>
+    </form>
+    <br>
+    <h4>Caution: Save the code before running</h4>
+    <br>
+    <button>
+        <a href="../runcode/{{name}}">Run Code</a>
+    </button>
+    <br>
+
+    {% if compiler_error %}
+        <textarea rows="10" cols="100" disabled>
+            {{compiler_error}}
+        </textarea>
+    {% endif %}
+
+    {% if stdout %}
+        <textarea rows="10" cols="100" disabled>
+            {{stdout}}
+        </textarea>
+    {% endif %}
+{% endblock %}

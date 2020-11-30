@@ -1,0 +1,12 @@
+{% extends 'common/layout.html' %}
+
+{% block body %}
+
+    {% if questions %}
+        {% for question in questions %}
+            {% if question.active %}
+            <a href="../competition/{{question.identifier}}">{{question.identifier}}</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock body %}

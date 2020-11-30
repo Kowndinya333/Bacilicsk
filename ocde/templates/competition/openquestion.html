@@ -1,0 +1,29 @@
+{% extends 'common/layout.html' %}
+
+{% block body %}
+    <h2>Question ID - [{{question.identifier}}] </h2>
+    <h4>Description - {{question.question_text}} </h4>
+    <h3>(Published on {{question.pub_date}})</h3>
+    <h5>The question closes on {{deadline}} </h5>
+    <form action="../saveattempt/{{question.identifier}}" method="POST">
+        {% csrf_token %}
+        
+        <label>Select Programming language</label><br>
+        <h6 style="color: red;">
+            {% if lang_message %}
+                *{{lang_message}}
+            {% endif %}
+        </h6>
+        <input type="radio" name="lang" value="C" id="C">
+        <label for="C">C++</label>
+        <input type="radio" name="lang" value="P" id="P">
+        <label for="P">Python</label>
+        <input type="radio" name="lang" value="J" id="J">
+        <label for="J">Java</label> 
+        <br>
+        <textarea rows="30" cols="100" name="codetext">{{code_display}}</textarea><br>
+        <h4>Your latest saved attempt before deadline is considered</h4>
+        <button type="submit">Save my Attempt</button>
+    </form>
+
+{% endblock body %}
