@@ -1,6 +1,36 @@
 {% extends 'common/layout.html' %}
 
 {% block body %}
-  <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
-  <h1>Welcome {{request.user.username}} </h1>
+  <h1>Welcome to BaCiliSK, {{request.user.username}} </h1>
+  <br>
+  <br>
+  <h1>About</h1>
+  <p>A lot of people use Windows, which is not the best suited environment for programming 
+    (lately however they have been much more welcoming to LINUX). 
+    In general, it's terrible when you're required to work on a software that's not compatible with 
+    your operating system of choice. One thing that has marvelled at inter-OS compatibility is web browsers.
+     In a not-so far future when high speed internet becomes as common as a smartphone or satellite TV, 
+     browsers will do most of the heavy lifting on computers. We'll be able to stream high end games and play on any system,
+      (I'm actually having a hard time thinking about what browsers can't do already).
+
+    One of these things that we already see in action is programming. </p>
+
+    <p>We, a team of 4 present you BACILISK, an online competing and development environment that allows you as a programmer to practice,
+      code, compete on pretty much all popular/common programming languages right from your browser.
+    </p>
+
+    <h2>Plans</h2>
+    <div>
+      <h6>Bacilisk Basic Plan</h6>
+      <p>You can practice, code and compete for absolutely free however the number of code files that you could store here are limited to 10.
+        You would also have no facility of writing codes with dependencies.
+        No Worries! You can always upgrade to Premium Plan
+      </p>
+    </div>
+    <div>
+      <h6>Bacilisk Premium Plan</h6>
+      <p>Along with the features that the Bacilisk basic plan provides, you will also have unlimited storage. Guess what? You will have a 
+        special directory structure for your projects.
+      </p>
+    </div>
 {% endblock body %}

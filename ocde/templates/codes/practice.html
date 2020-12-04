@@ -2,22 +2,27 @@
 
 {% block body %}
     <h1>Practice and run code over here</h1>
-
-    <form action="{% url 'codes:savecode' %}" method="POST">
-        {% csrf_token %}
-        <label>Select Programming language</label><br>
-        <input type="radio" name="lang" value="C" id="C">
-        <label for="C">C++</label>
-        <input type="radio" name="lang" value="P" id="P">
-        <label for="P">Python</label>
-        <input type="radio" name="lang" value="J" id="J">
-        <label for="J">Java</label> 
-        <br>
-        <textarea rows="30" cols="100" name="codetext">{{code_display}}</textarea><br>
-        <label>Save as</label>
-        <input type="text" name="saveas">
-        <br>
-        <button type="submit">Save</button>
-    </form>
-    
+    {{submessage}}
+    <div class="px-3 py-5 bg-gradient-primary text-white">
+        
+        <form action="{% url 'codes:savecode' %}" method="POST">
+            {% csrf_token %}
+            {% if err %}
+            <h6 style="color:yellow;">*{{err}}</h6>
+            {% endif %}
+            <label>Select Programming language</label><br>
+            <input type="radio" name="lang" value="C" id="C">
+            <label for="C">C++</label>
+            <input type="radio" name="lang" value="P" id="P">
+            <label for="P">Python</label>
+            <input type="radio" name="lang" value="J" id="J">
+            <label for="J">Java</label> 
+            <br>
+            <textarea rows="10" cols="100" name="codetext" class="px-3 py-5 bg-gradient-secondary text-white">{{code_display}}</textarea><br>
+            <label>Save as</label>
+            <input type="text" name="saveas" value="{{saveas}}">
+            <br>
+            <button type="submit">Save</button>
+        </form>
+    </div>
 {% endblock body %}

@@ -65,7 +65,7 @@
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="{% url 'codes:showcodes' %}">
-          <i class="fa fa-folder"></i>
+          <i class="fa fa-database"></i>
           <span>My Codes</span></a>
       </li>
 
@@ -80,6 +80,12 @@
         <a class="nav-link" href="{% url 'competition:index' %}">
           <i class="fa fa-laptop"></i>
           <span>Competition</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'codedir:index' %}">
+          <i class="fa fa-folder"></i>
+          <span>My Folder</span></a>
       </li>
 
       <!-- Divider -->
@@ -124,13 +130,9 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{% url 'users:profile' %}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -153,10 +155,9 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-         
-
+           
           {% block body%}
-          
+            
           {% endblock body%}
 
         </div>

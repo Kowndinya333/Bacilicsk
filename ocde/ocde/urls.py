@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(("users.urls", "users"), namespace='users')),
     path('codes/', include(("codes.urls", "codes"), namespace='codes')),
-    path('competition/', include(("competition.urls", "competition"), namespace="competition"))
+    path('competition/', include(("competition.urls", "competition"), namespace="competition")),
+    path('files/', include(("codedir.urls", "codedir"), namespace='codedir')),
+    path('coding/', include(("coding.urls", "coding"), namespace="coding")),
 ]
