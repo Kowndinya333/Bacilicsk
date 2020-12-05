@@ -3,6 +3,7 @@ from datetime import date, time
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models.deletion import CASCADE
+from django.db.models.fields.related import ForeignKey
 from django.utils import timezone
 # Create your models here.
 class Questionnaire(models.Model):
@@ -20,6 +21,8 @@ class Questionnaire(models.Model):
     def active(self):
         return self.pub_date + datetime.timedelta(days=self.time_limit) > timezone.now()
 
+    
+
 class Solution(models.Model):
     LANGUAGES=(
         ('C', 'C++'),
@@ -30,4 +33,18 @@ class Solution(models.Model):
     code=models.TextField()
     lang=models.CharField(max_length=1, choices=LANGUAGES, default='C')
     solver=models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='solutions')
+    is_Correct=models.CharField(max_length=1, default='P')
 
+class TestCases(models.Model):
+    input=models.TextField()
+    output=models.TextField()
+    question=ForeignKey(Questionnaire, on_delete=models.CASCADE, related_name="relatedquestion")
+
+class CorrectSolution(models.Model):
+    question=ForeignKey(Questionnaire, on_delete=models.CASCADE, related_name="relatedq")
+    input1=models.TextField(blank=True, default=None)
+    output1=models.TextField(default=None)
+    input2=models.TextField(blank=True, default=None)
+    output2=models.TextField(default=None)
+    input3=models.TextField(blank=True, default=None)
+    output3=models.TextField(default=None)

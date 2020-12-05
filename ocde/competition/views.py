@@ -1,6 +1,6 @@
 from datetime import date
 from django.http.response import HttpResponseRedirect
-from .models import Questionnaire, Solution
+from .models import CorrectSolution, Questionnaire, Solution
 from django.shortcuts import render
 from django.utils import timezone
 import datetime
@@ -46,7 +46,7 @@ def saveattempt(request, string):
             new_code=request.POST["codetext"]
             solution.code=new_code
             solution.save()
-        path="../"+string
+        path="./../open/"+string
         return HttpResponseRedirect(path)
     except:
         question=Questionnaire.objects.get(identifier=string)
@@ -90,3 +90,92 @@ def runcode(request, string):
         pass
     elif lang=='J':
         pass
+
+def validate(request, string):
+    if request.method=="GET":
+        return render(request, "competition/validate.html", {
+            "q_identifier":string
+        })
+    elif request.method=="POST":
+        identifier=request.POST["q_identifier"]
+        question=Questionnaire.objects.get(identifier=identifier)
+        solutions=Solution.objects.all().filter(question=question)
+        correct_solution=CorrectSolution.objects.get(question=question)
+        for solution in solutions:
+            code_text=solution.code
+            lang=solution.lang
+            if lang=="C":
+                path='files/validation/template.'
+                s1=path+"cpp"
+                s2=path+"exe"
+                fhand=open(s1, "w+")
+                myFile=File(fhand)
+                myFile.write(code_text)
+                myFile.close()
+                fhand.close()
+                s="g++ "+s1+" -o "+s2
+                inputs=list()
+                inputs.append(correct_solution.input1)
+                inputs.append(correct_solution.input2)
+                inputs.append(correct_solution.input3)
+                outputs=list()
+                outputs.append(correct_solution.output1)
+                outputs.append(correct_solution.output2)
+                outputs.append(correct_solution.output3)
+                solution.is_Correct='Y'
+                solution.save()
+                for i in range(3):
+                    input_data=bytes(inputs[i], "UTF-8")
+                    k1=subprocess.run(s, capture_output=True, text=True, shell=False)
+                    if k1.stderr:
+                        solution.is_Correct='N'
+                        solution.save()
+                        break
+                    else:
+                        k2=subprocess.run(s2, input=input_data, capture_output=True, shell=False)
+                        stdout=k2.stdout.decode("UTF-8")
+                        if outputs[i]!=stdout:
+                            solution.is_Correct='N'
+                            solution.save()
+                            break
+            elif lang=="P":
+                pass
+            elif lang=="J":
+                pass
+        return render(request, "users/index.html")
+
+def results(request):
+    questions=Questionnaire.objects.all()
+    status=list()
+    for question in questions:
+        try:
+            solution=Solution.objects.get(question=question, solver=request.user)
+            if solution.is_Correct=='Y':
+                status.append("Passed")
+            elif solution.isCorrect=='N':
+                status.append("Failed")
+            else:
+                status.append("Yet to be graded")
+        except:
+            status.append('Not attempted')
+            continue
+
+    users=User.objects.all()
+    ranks=dict()
+    for user in users:
+        ranks[user.username]=0
+    for question in questions:
+        solutions=Solution.objects.all().filter(question=question)
+        for solution in solutions:
+            user=solution.solver
+            if solution.is_Correct=='Y':
+                ranks[user.username]+=1
+    ranks_new=dict()
+    for i in sorted(ranks, key=ranks.get, reverse=True):
+        ranks_new[i]=ranks[i]
+    print(ranks_new)
+    return render(request, "competition/results.html", {
+        "questions":questions, "status":status, "leaderboard":ranks_new
+    })
+    
+            

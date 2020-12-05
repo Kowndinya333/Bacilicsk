@@ -24,7 +24,7 @@ def index(request):
             s=path+'/'+f
             if os.path.isfile(s):
                 files.append(f)
-            if os.path.isdir(s) and f!='templates':
+            if os.path.isdir(s) and (f!='templates' or f!="validation"):
                 dirs.append(f)
         return render(request, 'codedir/index.html', {
             "path":path, "dirs":dirs, "files":files
