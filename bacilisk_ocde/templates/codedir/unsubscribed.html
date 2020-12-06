@@ -1,0 +1,32 @@
+{% extends 'common/layout.html' %}
+
+{% block body %}
+    <h1>You are presently using the Bacilisk Basic Plan. Subscribe to get unlimited storage for your codes</h1>
+
+    <button href="{% url 'users:logout' %}" data-toggle="modal" data-target="#subscribeModal" style="display: inline-block;">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        Subscribe
+    </button>
+
+    <!-- newFolder Modal-->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Premium Subscription</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <form action="{% url 'users:subscribe' %}" method="POST">
+                {% csrf_token %}
+                <h6>Subscirbe for Premium Plan</h6>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" type="submit">Pay $40/year</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock body %}

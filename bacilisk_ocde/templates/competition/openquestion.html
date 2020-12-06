@@ -1,0 +1,69 @@
+{% extends 'common/layout.html' %}
+
+{% block body %}
+    <h2>Question ID - [{{question.identifier}}] </h2>
+    <h4>Description - {{question.question_text}} </h4>
+    <h3>(Published on {{question.pub_date}})</h3>
+    <h5>The question closes on {{deadline}} </h5>
+    <div class="px-3 py-5 bg-gradient-primary text-white">
+    <form action="./../../saveattempt/{{question.identifier}}" method="POST">
+        {% csrf_token %}
+        
+        <label>Select Programming language</label><br>
+        <h6 style="color: red;">
+            {% if lang_message %}
+                *{{lang_message}}
+            {% endif %}
+        </h6>
+        <input type="radio" name="lang" value="C" id="C">
+        <label for="C">C++</label>
+        <input type="radio" name="lang" value="P" id="P">
+        <label for="P">Python</label>
+        <input type="radio" name="lang" value="J" id="J">
+        <label for="J">Java</label> 
+        <br>
+        <textarea rows="30" cols="100" name="codetext" class="px-3 py-5 bg-gradient-secondary text-white">{{code_display}}</textarea><br>
+        <h4>Your latest saved attempt before deadline is considered</h4>
+        <button type="submit">Save my Attempt</button>
+    </form>
+    <br>
+    <h4 style="color:yellow;">Caution: Save the code before running</h4>
+    <br>
+    <button>
+        <a class="dropdown-item" href="{% url 'users:logout' %}" data-toggle="modal" data-target="#runcodeModal">
+            <i class="fa fa-cogs"></i>
+            Run Code
+        </a>
+    </button>
+    <br>
+    {% if compiler_error %}
+    <textarea rows="10" cols="100" disabled>{{compiler_error}}</textarea>
+    {% endif %}
+
+    {% if stdout %}
+    <textarea rows="10" cols="100" disabled>{{stdout}}</textarea>
+    {% endif %}
+    </form>
+    </div>
+    <!-- runcode Modal-->
+    <div class="modal fade" id="runcodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Please enter input(You may leave it empty too)</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="../../runcode/{{question.identifier}}" method="POST">
+                {% csrf_token %}
+                <textarea name="input_data" rows="2" cols="30"></textarea>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" type="submit">Run</button> 
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock body %}

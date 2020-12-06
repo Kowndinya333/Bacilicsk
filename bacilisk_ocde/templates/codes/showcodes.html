@@ -1,0 +1,39 @@
+{% extends 'common/layout.html' %}
+
+{% block body %}
+{{submessage}}
+    {% if  not codes %}
+    <h1>No Saved Codes</h1>
+    <a href="{% url 'codes:practice' %}" class="btn btn-secondary btn-icon-split">
+        <span class="icon text-white-50">
+          <i class="fas fa-arrow-right"></i>
+        </span>
+        <span class="text">Click here to Practice</span>
+    </a>
+
+
+    {% else %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">My Saved Codes(Maximum 10 files)</h6>
+        </div>
+    {% for code in codes%}
+        <div>
+                <div class="card-body">
+                    <a href="../showcode/{{code.name}}" class="btn btn-success btn-icon-split">
+                        <span class="text">{{code}}</span>
+                    </a>
+                    <a href="../deletecode/{{code.name}}" class="btn btn-danger btn-icon-split">
+                        <span class="icon text-white-50">
+                          <i class="fas fa-trash"></i>
+                        </span>
+                        <span class="text">Delete</span>
+                    </a>  
+                </div>
+        </div>   
+    {% endfor %}
+
+    
+    </div>
+    {% endif %}
+{% endblock body %}
