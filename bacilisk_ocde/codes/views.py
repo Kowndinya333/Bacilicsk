@@ -147,11 +147,12 @@ def runcode(request, file):
                 "code":code.code, "name":code.name, "stdout":k1.stdout
             })
     elif lang=='J':
+        p1="./files/"+request.user.first_name+"/templates/template."
         c_n = code.name
         if c_n.endswith(".java"):
             c_n = c_n[:-5]
 
-        print("./files/" + request.user.first_name +"/templates/"+c_n+".java")
+        # print("./files/" + request.user.first_name +"/templates/"+c_n+".java")
         fhand = open("./files/" + request.user.first_name +"/templates/"+c_n+".java",'w')
         fhand.close()
         fhand = open("./files/" + request.user.first_name +"/templates/"+c_n+".java",'w+')
@@ -159,6 +160,12 @@ def runcode(request, file):
         myFile.write(code_text)
         myFile.close()
         fhand.close()
+        inpfile=open(p1+"txt",'w+')
+        myinpfile=File(inpfile)
+        myinpfile.write(input_data)
+        myinpfile.close()
+        inpfile.close()
+        inpfile = open(p1+"txt")
         k1 = subprocess.run(["javac","./files/" + request.user.first_name +"/templates/"+c_n+".java"],capture_output=True, shell=False)
         if k1.stderr:
             os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
@@ -166,7 +173,8 @@ def runcode(request, file):
                 "code":code.code, "name":code.name, "compiler_error":k1.stderr
             })
         else:
-            k2=subprocess.run(["java","-cp","./files/" + request.user.first_name +"/templates/",c_n],input = input_data,text = True, capture_output=True, shell=False)
+            k2=subprocess.run(["java","-cp","./files/" + request.user.first_name +"/templates/",c_n],stdin = inpfile,text = True, capture_output=True, shell=False)
+            inpfile.close()
             os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
             os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".class")
             return render(request, "codes/showcode.html", {
