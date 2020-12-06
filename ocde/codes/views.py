@@ -94,14 +94,14 @@ def runcode(request, file):
     inputs=bytes(input_data, "UTF-8")
     if lang=='C':
         p1="files/"+request.user.first_name+"/templates/template."
-        string="g++ "+p1+"cpp"+" -o "+p1+".exe"
-        string2=p1+".exe"
+        stringtolist=["g++",p1+"cpp","-o",p1+"exe"]
+        string2=[p1+"exe"]
         fhand=open(p1+"cpp", 'w+')
         myFile=File(fhand)
         myFile.write(code_text)
         myFile.close()
         fhand.close()
-        k1=subprocess.run(string, capture_output=True, text=True, shell=False)
+        k1=subprocess.run(stringtolist, capture_output=True, text=True, shell=False)
         if k1.stderr:
             return render(request, 'codes/showcode.html', {
                 "code":code.code, "name":code.name, "compiler_error":k1.stderr
@@ -113,13 +113,13 @@ def runcode(request, file):
             })
     elif lang=='P':
         p1="files/"+request.user.first_name+"/templates/template."
-        string="python "+p1+"py"
+        stringtolist=["python3",p1+"py"]
         fhand=open(p1+"py", 'w+')
         myFile=File(fhand)
         myFile.write(code_text)
         myFile.close()
         fhand.close()
-        k1=subprocess.run(string ,universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        k1=subprocess.run(stringtolist , input = input_data,universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if k1.stderr:
             return render(request, 'codes/showcode.html', {
                 "code":code.code, "name":code.name, "compiler_error":k1.stderr

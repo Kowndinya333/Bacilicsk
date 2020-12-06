@@ -1,3 +1,4 @@
+
 import datetime
 from datetime import date, time
 from django.db import models
@@ -34,11 +35,6 @@ class Solution(models.Model):
     lang=models.CharField(max_length=1, choices=LANGUAGES, default='C')
     solver=models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='solutions')
     is_Correct=models.CharField(max_length=1, default='P')
-
-class TestCases(models.Model):
-    input=models.TextField()
-    output=models.TextField()
-    question=ForeignKey(Questionnaire, on_delete=models.CASCADE, related_name="relatedquestion")
 
 class CorrectSolution(models.Model):
     question=ForeignKey(Questionnaire, on_delete=models.CASCADE, related_name="relatedq")

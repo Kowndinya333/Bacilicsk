@@ -1,3 +1,4 @@
+
 from users.models import MyUser
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
@@ -22,10 +23,12 @@ def index(request):
         files=list()
         for f in listofDirs:
             s=path+'/'+f
+            print(path)
             if os.path.isfile(s):
                 files.append(f)
-            if os.path.isdir(s) and (f!='templates' or f!="validation"):
-                dirs.append(f)
+            if os.path.isdir(s) and f!='templates':
+                if  f!="validation":
+                    dirs.append(f)
         return render(request, 'codedir/index.html', {
             "path":path, "dirs":dirs, "files":files
         })

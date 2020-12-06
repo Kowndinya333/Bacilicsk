@@ -4,4 +4,3 @@ from .models import *
 admin.site.register(Questionnaire)
 admin.site.register(Solution)
 admin.site.register(CorrectSolution)
-admin.site.register(TestCases)
