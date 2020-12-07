@@ -69,7 +69,7 @@ def runcode(request, string):
     input_data=request.POST["input_data"]
     inputs=bytes(input_data, "UTF-8")
     if lang=='C':
-        p1="files/"+request.user.first_name+"/templates/template."
+        p1="files/"+request.user.username+"/templates/template."
         string="g++ "+p1+"cpp"+" -o "+p1+".exe"
         string2=p1+".exe"
         fhand=open(p1+"cpp", 'w+')

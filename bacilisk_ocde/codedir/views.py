@@ -17,7 +17,7 @@ def index(request):
         return render(request, "codedir/unsubscribed.html")
     else:
         string=str(request.path)
-        path='.'+string+request.user.first_name
+        path='.'+string+request.user.username
         listofDirs=os.listdir(path)
         dirs=list()
         files=list()

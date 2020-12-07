@@ -7,6 +7,7 @@ import subprocess
 import os
 from pathlib import Path
 from .models import MyUser
+from django.db import IntegrityError
 # Create your views here.
 
 def subcription_status(request):
@@ -27,6 +28,20 @@ def login_view(request):
     elif request.method=='POST':
         email=request.POST['email']
         password=request.POST['password']
+        if email.strip()=="":
+            return render(request, 'users/login.html', {
+                "message":"Please enter a valid email address"
+            })
+        if password.strip()=="":
+            return render(request, 'users/login.html', {
+                "message":"Please enter your password"
+            })
+        try:
+            user_1=User.objects.get(email=email)
+        except:
+            return render(request, 'users/login.html', {
+                "message":"Invalid Credentials"
+            })
         user_1=User.objects.get(email=email)
         user=authenticate(request, username=user_1.username, password=password)
         if user is not None:
@@ -45,23 +60,59 @@ def signup_view(request):
     if request.method=='GET':
         return render(request, 'users/signup.html')
     else:
+
         password=request.POST['password']
+        password1=request.POST['confpassword']
         email=request.POST['email']
-        firstname=request.POST['firstname']
-        lastname=request.POST['lastname']
-        user=User.objects.create_user(firstname, email, password)
-        user.last_name=lastname
-        user.first_name=firstname
-        user.save()
+        username=request.POST['username']
+        name=request.POST['name']
+        username=username.strip()
+        #username=request.POST['username']
+        #if username.strip()=="":
+        #    return render(request, 'users/signup.html', {
+        #        "message":"Please enter Username"
+        #    })
+        if username.strip()=="":
+            return render(request, 'users/signup.html', {
+                "message":"Please enter username"
+            })
+        if username.count(" "):
+            return render(request, 'users/signup.html', {
+                "message":"Please don't use spaces in username"
+            })
+        if name.strip()=="":
+            return render(request, 'users/signup.html', {
+                "message":"Please enter your Name"
+            })
+        if password=="":
+            return render(request, 'users/signup.html', {
+                "message":"Please set your password"
+            })
+        if password1 == password :
+            pass
+        else:
+            return render(request, 'users/signup.html', {
+                "message":"Password not matching"
+            })
+        #user=User.objects.create_user(username, email, password)
+        try:
+            user=User.objects.create_user(username, email, password)
+        except IntegrityError as e: 
+            return render(request, 'users/signup.html', {
+                "message":"Username already exists, try a different one"
+            })
+        #user.username=username
+        user.last_name=name
+        user.username=username
         myuser=MyUser(Paid_User='N', relatedUser=user)
         myuser.save()
-        p1=Path("files/"+firstname)
-        p2=Path("files/"+firstname+"/templates")
+        p1=Path("files/"+username)
+        p2=Path("files/"+username+"/templates")
         os.mkdir(p1)
         os.mkdir(p2)
-        open("files/"+firstname+"/templates/"+"template.cpp", "w+")
-        open("files/"+firstname+"/templates/"+"template.py", "w+")
-        open("files/"+firstname+"/templates/"+"template.java", "w+")
+        open("files/"+username+"/templates/"+"template.cpp", "w+")
+        open("files/"+username+"/templates/"+"template.py", "w+")
+        open("files/"+username+"/templates/"+"template.java", "w+")
         return HttpResponseRedirect(reverse("users:login"))
 
 def profile(request):

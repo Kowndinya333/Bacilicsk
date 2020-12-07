@@ -1,7 +1,7 @@
 {% extends 'common/layout.html' %}
 
 {% block body %}
-    <h2>{{request.user.first_name}} {{request.user.last_name}}</h2>
+    <h2>{{request.user.username}} {{request.user.last_name}}</h2>
     <h3>{{request.user.email}}</h3>
     <h3>{{subscribed_status}}</h3>
 {% endblock body %}

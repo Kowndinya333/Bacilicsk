@@ -46,6 +46,27 @@ def savecode(request):
                 return render(request, 'codes/practice.html', {
                 "code_display":request.POST['codetext'], "err":"Please suggest a name to save the file"
             })
+            if language=='C':
+                if fname[-4:] == ".cpp" :
+                    pass
+                else :
+                    return render(request, 'codes/practice.html', {
+                "code_display":request.POST['codetext'], "err":"Please check the file name"
+            })
+            elif language=='P':
+                if fname[-3:] == ".py" :
+                    pass
+                else :
+                    return render(request, 'codes/practice.html', {
+                "code_display":request.POST['codetext'], "err":"Please check the file name"
+            })
+            elif language=='J':
+                if fname[-5:] == ".java" :
+                    pass
+                else :
+                    return render(request, 'codes/practice.html', {
+                "code_display":request.POST['codetext'], "err":"Please check the file name"
+            })
             #checking maximum capacity which is 10
             codes=Code.objects.all().filter(coder=request.user)
             if len(codes)==10:
@@ -98,7 +119,7 @@ def runcode(request, file):
     # print(input_dataforpy)
     inputs=bytes(input_data, "UTF-8")
     if lang=='C':
-        p1="./files/"+request.user.first_name+"/templates/template."
+        p1="./files/"+request.user.username+"/templates/template."
         stringtolist=["g++",p1+"cpp","-o",p1+"exe"]
         string2=[p1+"exe"]
         fhand=open(p1+"cpp", 'w+')
@@ -125,7 +146,7 @@ def runcode(request, file):
                 "code":code.code, "name":code.name, "stdout":k2.stdout.decode('UTF-8')
             })
     elif lang=='P':
-        p1="./files/"+request.user.first_name+"/templates/template."
+        p1="./files/"+request.user.username+"/templates/template."
         stringtolist=["python3",p1+"py"]
         fhand=open(p1+"py", 'w+')
         myFile=File(fhand)
@@ -152,15 +173,15 @@ def runcode(request, file):
                 "code":code.code, "name":code.name, "stdout":k2.stdout
             })
     elif lang=='J':
-        p1="./files/"+request.user.first_name+"/templates/template."
+        p1="./files/"+request.user.username+"/templates/template."
         c_n = code.name
         if c_n.endswith(".java"):
             c_n = c_n[:-5]
 
-        # print("./files/" + request.user.first_name +"/templates/"+c_n+".java")
-        fhand = open("./files/" + request.user.first_name +"/templates/"+c_n+".java",'w')
+        # print("./files/" + request.user.username +"/templates/"+c_n+".java")
+        fhand = open("./files/" + request.user.username +"/templates/"+c_n+".java",'w')
         fhand.close()
-        fhand = open("./files/" + request.user.first_name +"/templates/"+c_n+".java",'w+')
+        fhand = open("./files/" + request.user.username +"/templates/"+c_n+".java",'w+')
         myFile=File(fhand)
         myFile.write(code_text)
         myFile.close()
@@ -172,17 +193,17 @@ def runcode(request, file):
         inpfile.close()
         inpfile = open(p1+"txt")
         inpfile.seek(0)
-        k1 = subprocess.run(["javac","./files/" + request.user.first_name +"/templates/"+c_n+".java"],capture_output=True, shell=False)
+        k1 = subprocess.run(["javac","./files/" + request.user.username +"/templates/"+c_n+".java"],capture_output=True, shell=False)
         if k1.stderr:
-            os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
+            os.remove("./files/" + request.user.username +"/templates/"+c_n+".java")
             return render(request, 'codes/showcode.html', {
                 "code":code.code, "name":code.name, "compiler_error":k1.stderr
             })
         else:
-            k2=subprocess.run(["java","-cp","./files/" + request.user.first_name +"/templates/",c_n],stdin = inpfile,text = True, capture_output=True, shell=False)
+            k2=subprocess.run(["java","-cp","./files/" + request.user.username +"/templates/",c_n],stdin = inpfile,text = True, capture_output=True, shell=False)
             inpfile.close()
-            os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
-            os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".class")
+            os.remove("./files/" + request.user.username +"/templates/"+c_n+".java")
+            os.remove("./files/" + request.user.username +"/templates/"+c_n+".class")
             return render(request, "codes/showcode.html", {
                 "code":code.code, "name":code.name, "stdout":k2.stdout
             })
