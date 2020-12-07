@@ -31,14 +31,14 @@ def runcode(request):
         code_text+=line
     if filepath[-1]=='p':
         p1="files/"+request.user.username+"/templates/template."
-        string="g++ "+p1+"cpp"+" -o "+p1+".exe"
-        string2=p1+".exe"
+        string=p1+"cpp"
+        string2=p1+"exe"
         fhand=open(p1+"cpp", 'w+')
         myFile=File(fhand)
         myFile.write(code_text)
         myFile.close()
         fhand.close()
-        k1=subprocess.run(string, capture_output=True, text=True, shell=False)
+        k1=subprocess.run(["g++", string, "-o", string2], capture_output=True, text=True, shell=False)
         if k1.stderr:
             return render(request, 'coding/index.html', {
                 "code":code_text, "path":filepath, "compiler_error":k1.stderr
