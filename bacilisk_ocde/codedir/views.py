@@ -23,7 +23,6 @@ def index(request):
         files=list()
         for f in listofDirs:
             s=path+'/'+f
-            print(path)
             if os.path.isfile(s):
                 files.append(f)
             if os.path.isdir(s) and f!='templates':
