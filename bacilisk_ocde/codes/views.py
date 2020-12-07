@@ -92,7 +92,9 @@ def runcode(request, file):
     lang=code.lang
     input_data=request.POST["input_data"]
     # print(input_data)
-    input_dataforpy= input_data.splitlines()
+    # input_dataforpy= input_data.splitlines()
+    # for a in input_dataforpy:
+    #     a = a.strip("\r")
     # print(input_dataforpy)
     inputs=bytes(input_data, "UTF-8")
     if lang=='C':
@@ -104,12 +106,13 @@ def runcode(request, file):
         myFile.write(code_text)
         myFile.close()
         fhand.close()
-        inpfile=open(p1+"txt",'w+')
+        inpfile=open(p1+"txt",'w')
         myinpfile=File(inpfile)
         myinpfile.write(input_data)
         myinpfile.close()
         inpfile.close()
         inpfile = open(p1+"txt")
+        inpfile.seek(0)
         k1=subprocess.run(stringtolist, capture_output=True, text=True, shell=False)
         if k1.stderr:
             return render(request, 'codes/showcode.html', {
@@ -135,16 +138,18 @@ def runcode(request, file):
         myinpfile.close()
         inpfile.close()
         inpfile = open(p1+"txt")
-        k1=subprocess.run(stringtolist, stdin=inpfile, text=True, capture_output=True, shell=False)
+        inpfile.seek(0)
+        k1=subprocess.run(["cat",p1+"txt"], universal_newlines=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        k2=subprocess.run(stringtolist, input = k1.stdout, universal_newlines=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         inpfile.close()
-        if k1.stderr:
+        if k2.stderr:
             return render(request, 'codes/showcode.html', {
-                "code":code.code, "name":code.name, "compiler_error":k1.stderr
+                "code":code.code, "name":code.name, "compiler_error":k2.stderr
             })
         else:
             # k2=subprocess.run('files/template.exe', capture_output=True, shell=False)
             return render(request, "codes/showcode.html", {
-                "code":code.code, "name":code.name, "stdout":k1.stdout
+                "code":code.code, "name":code.name, "stdout":k2.stdout
             })
     elif lang=='J':
         p1="./files/"+request.user.first_name+"/templates/template."
@@ -166,6 +171,7 @@ def runcode(request, file):
         myinpfile.close()
         inpfile.close()
         inpfile = open(p1+"txt")
+        inpfile.seek(0)
         k1 = subprocess.run(["javac","./files/" + request.user.first_name +"/templates/"+c_n+".java"],capture_output=True, shell=False)
         if k1.stderr:
             os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
