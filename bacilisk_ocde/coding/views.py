@@ -73,7 +73,7 @@ def runcode(request):
         else:
             # k2=subprocess.run('files/template.exe', capture_output=True, shell=False)
             return render(request, "coding/index.html", {
-                "code":code_text, "path":filepath, "stdout":k2.stdout.decode('UTF-8')
+                "code":code_text, "path":filepath, "stdout":k2.stdout
             })
     elif filepath[-1]=='a':
         p1="./files/"+request.user.username+"/templates/template."
