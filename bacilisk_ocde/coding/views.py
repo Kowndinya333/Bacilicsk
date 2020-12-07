@@ -1,5 +1,5 @@
 
-from django.shortcuts import render
+from django.shortcuts import render 
 import subprocess
 import os
 from django.core.files import File
@@ -56,15 +56,57 @@ def runcode(request):
         myFile.write(code_text)
         myFile.close()
         fhand.close()
-        k1=subprocess.run(stringtolist , input = input_data,universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        if k1.stderr:
-            return render(request, 'codes/showcode.html', {
-                "code":code_text, "path":filepath, "compiler_error":k1.stderr
+        inpfile=open(p1+"txt",'w+')
+        myinpfile=File(inpfile)
+        myinpfile.write(input_data)
+        myinpfile.close()
+        inpfile.close()
+        inpfile = open(p1+"txt")
+        inpfile.seek(0)
+        k1=subprocess.run(["cat",p1+"txt"], universal_newlines=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        k2=subprocess.run(stringtolist, input = k1.stdout, universal_newlines=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        inpfile.close()
+        if k2.stderr:
+            return render(request, 'coding/index.html', {
+                "code":code_text, "path":filepath, "compiler_error":k2.stderr
             })
         else:
             # k2=subprocess.run('files/template.exe', capture_output=True, shell=False)
-            return render(request, "codes/showcode.html", {
-                "code":code_text, "path":filepath, "stdout":k1.stdout.decode('UTF-8')
+            return render(request, "coding/index.html", {
+                "code":code_text, "path":filepath, "stdout":k2.stdout.decode('UTF-8')
             })
     elif filepath[-1]=='a':
-        pass
+        p1="./files/"+request.user.first_name+"/templates/template."
+        c_n = code.name
+        if c_n.endswith(".java"):
+            c_n = c_n[:-5]
+
+        # print("./files/" + request.user.first_name +"/templates/"+c_n+".java")
+        fhand = open("./files/" + request.user.first_name +"/templates/"+c_n+".java",'w')
+        fhand.close()
+        fhand = open("./files/" + request.user.first_name +"/templates/"+c_n+".java",'w+')
+        myFile=File(fhand)
+        myFile.write(code_text)
+        myFile.close()
+        fhand.close()
+        inpfile=open(p1+"txt",'w+')
+        myinpfile=File(inpfile)
+        myinpfile.write(input_data)
+        myinpfile.close()
+        inpfile.close()
+        inpfile = open(p1+"txt")
+        inpfile.seek(0)
+        k1 = subprocess.run(["javac","./files/" + request.user.first_name +"/templates/"+c_n+".java"],capture_output=True, shell=False)
+        if k1.stderr:
+            os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
+            return render(request, 'coding/index.html', {
+                "code":code.code, "name":code.name, "compiler_error":k1.stderr
+            })
+        else:
+            k2=subprocess.run(["java","-cp","./files/" + request.user.first_name +"/templates/",c_n],stdin = inpfile,text = True, capture_output=True, shell=False)
+            inpfile.close()
+            os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".java")
+            os.remove("./files/" + request.user.first_name +"/templates/"+c_n+".class")
+            return render(request, "coding/index.html", {
+                "code":code.code, "name":code.name, "stdout":k2.stdout
+            })
