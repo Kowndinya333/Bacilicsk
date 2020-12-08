@@ -128,4 +128,4 @@ def subscribe(request):
     myuser=MyUser.objects.get(relatedUser=request.user)
     myuser.Paid_User='Y'
     myuser.save()
-    return render(request, 'codedir/index.html')
+    return HttpResponseRedirect(reverse('codedir:index'))
