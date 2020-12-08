@@ -76,10 +76,11 @@ def runcode(request):
                 "code":code_text, "path":filepath, "stdout":k2.stdout
             })
     elif filepath[-1]=='a':
+        i=len(filepath)-1
+        while filepath[i]!='/':
+            i-=1
+        c_n=filepath[i+1:-5]
         p1="./files/"+request.user.username+"/templates/template."
-        c_n = code.name
-        if c_n.endswith(".java"):
-            c_n = c_n[:-5]
 
         # print("./files/" + request.user.username +"/templates/"+c_n+".java")
         fhand = open("./files/" + request.user.username +"/templates/"+c_n+".java",'w')
@@ -100,7 +101,7 @@ def runcode(request):
         if k1.stderr:
             os.remove("./files/" + request.user.username +"/templates/"+c_n+".java")
             return render(request, 'coding/index.html', {
-                "code":code.code, "name":code.name, "compiler_error":k1.stderr
+                "code":code_text, "path":filepath, "compiler_error":k1.stderr
             })
         else:
             k2=subprocess.run(["java","-cp","./files/" + request.user.username +"/templates/",c_n],stdin = inpfile,text = True, capture_output=True, shell=False)
@@ -108,5 +109,5 @@ def runcode(request):
             os.remove("./files/" + request.user.username +"/templates/"+c_n+".java")
             os.remove("./files/" + request.user.username +"/templates/"+c_n+".class")
             return render(request, "coding/index.html", {
-                "code":code.code, "name":code.name, "stdout":k2.stdout
+                "code":code_text, "path":filepath, "stdout":k2.stdout
             })
