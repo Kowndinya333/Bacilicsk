@@ -118,10 +118,15 @@ def runcode(request, file):
     #     a = a.strip("\r")
     # print(input_dataforpy)
     inputs=bytes(input_data, "UTF-8")
+    commandline_args=request.POST["commandline_args"]
+    cl_args=str(commandline_args)
     if lang=='C':
         p1="./files/"+request.user.username+"/templates/template."
         stringtolist=["g++",p1+"cpp","-o",p1+"exe"]
         string2=[p1+"exe"]
+        for i in cl_args.split(" "):
+            if i!="":
+                string2.append(i)
         fhand=open(p1+"cpp", 'w+')
         myFile=File(fhand)
         myFile.write(code_text)
@@ -134,20 +139,23 @@ def runcode(request, file):
         inpfile.close()
         inpfile = open(p1+"txt")
         inpfile.seek(0)
-        k1=subprocess.run(stringtolist, capture_output=True, text=True, shell=False)
+        k1=subprocess.run(stringtolist,  universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if k1.stderr:
             return render(request, 'codes/showcode.html', {
                 "code":code.code, "name":code.name, "compiler_error":k1.stderr
             })
         else:
-            k2=subprocess.run(string2, stdin = inpfile, capture_output=True, shell=False)
+            k2=subprocess.run(string2, stdin = inpfile,  universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             inpfile.close()
             return render(request, "codes/showcode.html", {
-                "code":code.code, "name":code.name, "stdout":k2.stdout.decode('UTF-8')
+                "code":code.code, "name":code.name, "stdout":k2.stdout
             })
     elif lang=='P':
         p1="./files/"+request.user.username+"/templates/template."
         stringtolist=["python3",p1+"py"]
+        for i in cl_args.split(" "):
+            if i!="":
+                stringtolist.append(i)
         fhand=open(p1+"py", 'w+')
         myFile=File(fhand)
         myFile.write(code_text)
@@ -193,14 +201,18 @@ def runcode(request, file):
         inpfile.close()
         inpfile = open(p1+"txt")
         inpfile.seek(0)
-        k1 = subprocess.run(["javac","./files/" + request.user.username +"/templates/"+c_n+".java"],capture_output=True, shell=False)
+        k1 = subprocess.run(["javac","./files/" + request.user.username +"/templates/"+c_n+".java"],universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if k1.stderr:
             os.remove("./files/" + request.user.username +"/templates/"+c_n+".java")
             return render(request, 'codes/showcode.html', {
                 "code":code.code, "name":code.name, "compiler_error":k1.stderr
             })
         else:
-            k2=subprocess.run(["java","-cp","./files/" + request.user.username +"/templates/",c_n],stdin = inpfile,text = True, capture_output=True, shell=False)
+            list_string=["java","-cp","./files/"+request.user.username+"/templates/",c_n]
+            for i in cl_args.split(" "):
+                if i!="":
+                    list_string.append(i)
+            k2=subprocess.run(list_string,stdin = inpfile,universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             inpfile.close()
             os.remove("./files/" + request.user.username +"/templates/"+c_n+".java")
             os.remove("./files/" + request.user.username +"/templates/"+c_n+".class")
