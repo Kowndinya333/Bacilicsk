@@ -45,6 +45,7 @@ def saveattempt(request, string):
         else:
             solution=Solution.objects.get(question=question, solver=request.user)
             new_code=request.POST["codetext"]
+            solution.lang=language
             solution.code=new_code
             solution.save()
         path="./../open/"+string
@@ -69,7 +70,7 @@ def runcode(request, string):
     input_data=request.POST["input_data"]
     inputs=bytes(input_data, "UTF-8")
     if lang=='C':
-        p1="files/"+request.user.username+"/template/template."
+        p1="files/"+request.user.username+"/templates/template."
         string=p1+"cpp"
         string2=p1+"exe"
         fhand=open(p1+"cpp", 'w+')
@@ -88,7 +89,7 @@ def runcode(request, string):
                 "code_display":code_text, "name":question.identifier, "stdout":k2.stdout.decode('UTF-8'), "question":question, "deadline":deadline
             })
     elif lang=='P':
-        p1="files/"+request.user.username+"/template/template."
+        p1="files/"+request.user.username+"/templates/template."
         stringtolist=["python3", p1+"py"]
         fhand=open(p1+"py", "w+")
         myFile=File(fhand)
@@ -110,7 +111,7 @@ def runcode(request, string):
             })
         else:
             return render(request, "competition/openquestion.html", {
-                "code_display":code_text, "name":question.identifier, "stout":k2.stout, "question":question, "deadline":deadline
+                "code_display":code_text, "name":question.identifier, "stdout":k2.stdout, "question":question, "deadline":deadline
             })
     elif lang=='J':
         p1="./files/"+request.user.username+"/templates/template."
@@ -178,7 +179,7 @@ def validate(request, string):
                 solution.save()
                 for i in range(3):
                     input_data=bytes(inputs[i], "UTF-8")
-                    k1=subprocess.run(["g++", s1, "-o", "s2"], capture_output=True, text=True, shell=False)
+                    k1=subprocess.run(["g++", s1, "-o", s2], capture_output=True, text=True, shell=False)
                     if k1.stderr:
                         solution.is_Correct='N'
                         solution.save()
@@ -205,7 +206,7 @@ def validate(request, string):
                     input_data=bytes(inputs[i], "UTF-8")
                     inpfile=open(path+"txt", 'w+')
                     myinpfile=File(inpfile)
-                    myinpfile.write(input_data)
+                    myinpfile.write(inputs[i])
                     myinpfile.close()
                     inpfile.close()
                     inpfile=open(path+"txt")
