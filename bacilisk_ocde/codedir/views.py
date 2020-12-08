@@ -60,7 +60,8 @@ def newfolder(request):
     path=request.POST["presentpath"]
     newstr=path[2:]
     folder_name=request.POST['newfoldername']
-    string=newstr+'/'+folder_name
+    f_name=folder_name.replace(" ", "_")
+    string=newstr+'/'+f_name
     os.mkdir(string)
     return HttpResponseRedirect(reverse('codedir:index'))
 
@@ -68,7 +69,8 @@ def newfile(request):
     path=request.POST["presentpath"]
     newstr=path[2:]
     file_name=request.POST['newfilename']
-    string=newstr+'/'+file_name
+    f_name=file_name.replace(" ", "_")
+    string=newstr+'/'+f_name
     open(string, "w+")
     return HttpResponseRedirect(reverse("codedir:index"))
 
