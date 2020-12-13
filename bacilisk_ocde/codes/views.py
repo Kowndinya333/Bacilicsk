@@ -11,6 +11,16 @@ from users.models import MyUser
 # Create your views here.
 
 def subcription_status(request):
+    """Check whether user is subscribed to code directory or not
+    
+    Uses the present request and finds if the respective user is subscribed or not.
+
+    Args:
+        request: the present request at any point
+    
+    Returns:
+        A Boolean value. Returns true if the current user sending the request is subscribed to code directory
+    """
     myuser=MyUser.objects.get(relatedUser=request.user)
     if myuser.Paid_User=='Y':
         return True
@@ -18,6 +28,17 @@ def subcription_status(request):
         return False
 
 def showcodes(request):
+    """To display all the saved codes from the database corresponding to the user requesting it.
+
+    If the user is subscribed to the premium plan, then the user is reminded of it with the string stored in the variable submessage, statnding for
+    subscription_message.
+    The method then retrieves all the entries in the Code table that have the current user as the coder and a list of Code objects is generated.
+
+    Args:
+        A GET request requesting the codes written by the current user.
+    Returns:
+        Renders the HTML page, codes/showcodes.html with the list of all codes that the user has stored in the database.
+    """
     if subcription_status(request)==True:
         submessage="You have premimum access. You can always head towards My Folders section to store unlimited amount of files"
     else:
@@ -28,6 +49,16 @@ def showcodes(request):
     })
 
 def practice(request):
+    """To process the GET request on pressing the Practice link from the left navigation bar of the homepage.
+
+    It renders codes/practice.html containing a html form for the user to code, save and practice.
+
+    Args:
+        A GET request requested from the left navigation bar.
+    Returns:
+        It renders codes/practice.html that has a form for user to enter code and run in three programming languages-C++, Java, Python
+
+    """
     if subcription_status(request)==True:
         submessage="You have premimum access. You can always head towards My Folders section to store unlimited amount of files"
     else:
@@ -37,6 +68,17 @@ def practice(request):
     })
 
 def savecode(request):
+    """Process the request from the "Save" link from the codes/practice.html
+
+    Takes in the inputs from the form. Uses a try-except block to check the validity of the form data and renders the codes/practice.html with 
+    the supporting error message, if any error in the form data is found. If everything is fine, then the form data is stored into the Code table 
+    with the coder being the current user.
+
+    Args:
+        A GET request from the practice page.
+    Returns:
+        Returns the codes/practice.html if with an error, if the form data is wrong and with just the saved code, if the form data is succesfully stored into the database.    
+    """
     if request.user.is_authenticated:
         try:
             language=request.POST['lang']
@@ -85,6 +127,15 @@ def savecode(request):
         return HttpResponseRedirect(reverse("users:index"))
 
 def showcode(request, file):
+    """Processing GET request from the code file links from the codes/showcodes.html
+
+    Reminds the user if already in Premium plan and displays message if desired to use code directory structure
+
+    Args:
+        GET request, along with the file name that wants to be retrieved
+    Returns:
+        Returns a html page, 'codes/showcode.html', along with any message that is passed
+    """
     if subcription_status(request)==True:
         submessage="You have premimum access. You can always head towards My Folders section to store unlimited amount of files"
     else:
@@ -96,10 +147,31 @@ def showcode(request, file):
     })
 
 def deletecode(request, file):
+    """Processes Delete code file request
+
+    The method retrieves the Code object from the Code database that corresponds to the file name passed as an 
+    argument and then deletes the file. Finally the user is redirected to codes/showcodes.html
+
+    Args:
+        GET request and a file name which has to be removed from the database.
+    Returns:
+        A HttpResponseRedirect to the codes/showcodes.html page with the updated list after deleting this file.
+    """
     code=Code.objects.get(coder=request.user, name=file).delete()
     return HttpResponseRedirect(reverse("codes:showcodes"))
 
 def updatecode(request, file):
+    """Processes update request to the code of an already existing code object in Code table
+
+    This is triggered when the user changes the code from the codes/showcode.html page and presses save.
+    The updated code is obtained from the form that exists in the codes/showcode.html page. The code object corresponding to the 
+    user and the file name given as arguments. THe code is then updated and saved. Finally user is redirected to the page showing the updated code.
+
+    Args:
+        GET request and file name of the file being modified.
+    Returns:
+        HttpResponseRedirect to the codes/showcode/file which displays the updated code.
+    """
     new_code=request.POST['codetext']
     code=Code.objects.get(coder=request.user, name=file)
     code.code=new_code
@@ -108,6 +180,17 @@ def updatecode(request, file):
     return HttpResponseRedirect(string)
 
 def runcode(request, file):
+    """Compilation and execution of the code
+
+    The method is triggered when the user presses run on the showcodes.html page.It takes as argument, the file name. Hence, 
+    retrieves the code object from the Code table corresponding to the file name and the current user. It then checks the language of the file.
+    According to the language of the code file, it runs the corresponding code. It uses subprocess module to compile and execute the code.
+
+    Args:
+        A POST request and file name
+    Returns:
+        It renders back the codes/showcode/file but this time with compile error, if there is one or stdout of the process, if there is one.
+    """
     code=Code.objects.get(coder=request.user, name=file)
     code_text=code.code
     lang=code.lang

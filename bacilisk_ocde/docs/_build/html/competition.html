@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>competition package &#8212; bacilisk_ocde 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="competition-package">
+<h1>competition package<a class="headerlink" href="#competition-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="competition.migrations.html">competition.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="competition.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="competition.migrations.html#module-competition.migrations.0001_initial">competition.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="competition.migrations.html#module-competition.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-competition.admin">
+<span id="competition-admin-module"></span><h2>competition.admin module<a class="headerlink" href="#module-competition.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-competition.apps">
+<span id="competition-apps-module"></span><h2>competition.apps module<a class="headerlink" href="#module-competition.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="competition.apps.CompetitionConfig">
+<em class="property">class </em><code class="sig-prename descclassname">competition.apps.</code><code class="sig-name descname">CompetitionConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.apps.CompetitionConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="competition.apps.CompetitionConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'competition'</em><a class="headerlink" href="#competition.apps.CompetitionConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-competition.models">
+<span id="competition-models-module"></span><h2>competition.models module<a class="headerlink" href="#module-competition.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="competition.models.CorrectSolution">
+<em class="property">class </em><code class="sig-prename descclassname">competition.models.</code><code class="sig-name descname">CorrectSolution</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.CorrectSolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Class that represents the table “CorrectSolution” in the table.</p>
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.question">
+<code class="sig-name descname">question</code><a class="headerlink" href="#competition.models.CorrectSolution.question" title="Permalink to this definition">¶</a></dt>
+<dd><p>question for which the solution is a correct solution to.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.input1">
+<code class="sig-name descname">input1</code><a class="headerlink" href="#competition.models.CorrectSolution.input1" title="Permalink to this definition">¶</a></dt>
+<dd><p>test case input1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.output1">
+<code class="sig-name descname">output1</code><a class="headerlink" href="#competition.models.CorrectSolution.output1" title="Permalink to this definition">¶</a></dt>
+<dd><p>test case output1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.input2">
+<code class="sig-name descname">input2</code><a class="headerlink" href="#competition.models.CorrectSolution.input2" title="Permalink to this definition">¶</a></dt>
+<dd><p>test case input2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.output2">
+<code class="sig-name descname">output2</code><a class="headerlink" href="#competition.models.CorrectSolution.output2" title="Permalink to this definition">¶</a></dt>
+<dd><p>test case output2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.input3">
+<code class="sig-name descname">input3</code><a class="headerlink" href="#competition.models.CorrectSolution.input3" title="Permalink to this definition">¶</a></dt>
+<dd><p>test case input3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.output3">
+<code class="sig-name descname">output3</code><a class="headerlink" href="#competition.models.CorrectSolution.output3" title="Permalink to this definition">¶</a></dt>
+<dd><p>test case output3</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="competition.models.CorrectSolution.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#competition.models.CorrectSolution.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="competition.models.CorrectSolution.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#competition.models.CorrectSolution.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#competition.models.CorrectSolution.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">input1</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id1">
+<code class="sig-name descname">input2</code><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id2">
+<code class="sig-name descname">input3</code><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#competition.models.CorrectSolution.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id3">
+<code class="sig-name descname">output1</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id4">
+<code class="sig-name descname">output2</code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id5">
+<code class="sig-name descname">output3</code><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id6">
+<code class="sig-name descname">question</code><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.CorrectSolution.question_id">
+<code class="sig-name descname">question_id</code><a class="headerlink" href="#competition.models.CorrectSolution.question_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="competition.models.Questionnaire">
+<em class="property">class </em><code class="sig-prename descclassname">competition.models.</code><code class="sig-name descname">Questionnaire</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Questionnaire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Class that represents the table “Questionnaire” in the database.</p>
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.question_text">
+<code class="sig-name descname">question_text</code><a class="headerlink" href="#competition.models.Questionnaire.question_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>The description of the question</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.pub_date">
+<code class="sig-name descname">pub_date</code><a class="headerlink" href="#competition.models.Questionnaire.pub_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>The date of publication of the question</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.time_limit">
+<code class="sig-name descname">time_limit</code><a class="headerlink" href="#competition.models.Questionnaire.time_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The integer which is the time_limit to solve the question in days.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.identifier">
+<code class="sig-name descname">identifier</code><a class="headerlink" href="#competition.models.Questionnaire.identifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unique identifier that identifies with the particular question in the table</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="competition.models.Questionnaire.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#competition.models.Questionnaire.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="competition.models.Questionnaire.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#competition.models.Questionnaire.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="competition.models.Questionnaire.active">
+<code class="sig-name descname">active</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Questionnaire.active" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="competition.models.Questionnaire.end_date">
+<code class="sig-name descname">end_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Questionnaire.end_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="competition.models.Questionnaire.get_next_by_pub_date">
+<code class="sig-name descname">get_next_by_pub_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: pub_date&gt;</em>, <em class="sig-param">is_next=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Questionnaire.get_next_by_pub_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="competition.models.Questionnaire.get_previous_by_pub_date">
+<code class="sig-name descname">get_previous_by_pub_date</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.DateTimeField: pub_date&gt;</em>, <em class="sig-param">is_next=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Questionnaire.get_previous_by_pub_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#competition.models.Questionnaire.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id7">
+<code class="sig-name descname">identifier</code><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#competition.models.Questionnaire.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id8">
+<code class="sig-name descname">pub_date</code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id9">
+<code class="sig-name descname">question_text</code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.relatedq">
+<code class="sig-name descname">relatedq</code><a class="headerlink" href="#competition.models.Questionnaire.relatedq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Questionnaire.solution_set">
+<code class="sig-name descname">solution_set</code><a class="headerlink" href="#competition.models.Questionnaire.solution_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id10">
+<code class="sig-name descname">time_limit</code><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="competition.models.Solution">
+<em class="property">class </em><code class="sig-prename descclassname">competition.models.</code><code class="sig-name descname">Solution</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Class that represents the table “Solution” in the database.</p>
+<dl class="py attribute">
+<dt id="competition.models.Solution.question">
+<code class="sig-name descname">question</code><a class="headerlink" href="#competition.models.Solution.question" title="Permalink to this definition">¶</a></dt>
+<dd><p>the question for which the given entry is a solution</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.code">
+<code class="sig-name descname">code</code><a class="headerlink" href="#competition.models.Solution.code" title="Permalink to this definition">¶</a></dt>
+<dd><p>the actual code which is the solution of the question</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.lang">
+<code class="sig-name descname">lang</code><a class="headerlink" href="#competition.models.Solution.lang" title="Permalink to this definition">¶</a></dt>
+<dd><p>the programming language of the code written</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.solver">
+<code class="sig-name descname">solver</code><a class="headerlink" href="#competition.models.Solution.solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>the user that gave the solution</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.is_Correct">
+<code class="sig-name descname">is_Correct</code><a class="headerlink" href="#competition.models.Solution.is_Correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>it is ‘P’ if pending, ‘Y’ if correct, ‘N’ if incorrect.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="competition.models.Solution.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#competition.models.Solution.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.LANGUAGES">
+<code class="sig-name descname">LANGUAGES</code><em class="property"> = (('C', 'C++'), ('P', 'Python'), ('J', 'Java'))</em><a class="headerlink" href="#competition.models.Solution.LANGUAGES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt id="competition.models.Solution.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#competition.models.Solution.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id11">
+<code class="sig-name descname">code</code><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="competition.models.Solution.get_lang_display">
+<code class="sig-name descname">get_lang_display</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.CharField: lang&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#competition.models.Solution.get_lang_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#competition.models.Solution.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id12">
+<code class="sig-name descname">is_Correct</code><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id13">
+<code class="sig-name descname">lang</code><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#competition.models.Solution.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id14">
+<code class="sig-name descname">question</code><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.question_id">
+<code class="sig-name descname">question_id</code><a class="headerlink" href="#competition.models.Solution.question_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="id15">
+<code class="sig-name descname">solver</code><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="competition.models.Solution.solver_id">
+<code class="sig-name descname">solver_id</code><a class="headerlink" href="#competition.models.Solution.solver_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-competition.tests">
+<span id="competition-tests-module"></span><h2>competition.tests module<a class="headerlink" href="#module-competition.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-competition.urls">
+<span id="competition-urls-module"></span><h2>competition.urls module<a class="headerlink" href="#module-competition.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-competition.views">
+<span id="competition-views-module"></span><h2>competition.views module<a class="headerlink" href="#module-competition.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="competition.views.index">
+<code class="sig-prename descclassname">competition.views.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the GET request that is obtained from pressing the Competition link on the left nav-bar of the main page.</p>
+<p>All the questions from the Questionnaire table are extracted, and then it is rendered in competition/index.html but only if the quesiton is active as
+decided by the developers.
+:param A GET request when pressed the Competition button:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns by rendering the competition/index.html where all active questions are listed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="competition.views.openquestion">
+<code class="sig-prename descclassname">competition.views.</code><code class="sig-name descname">openquestion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.views.openquestion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the GET request obtained by pressing the link of question from the competition/index.html.</p>
+<p>The question with the given string as identifier is extracted from the Questionnaire table. If there is already a solution submitted by the user,
+then the competition/open/string is rendered with the code that the user has submitted earlier.
+If not submitted user sees an empty field for him to type in his solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>GET request</strong> (<em>The</em>) – </p></li>
+<li><p><strong>a string which is the identifier to the question</strong> (<em>and</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns by rendering the competition/open/string with appropriate content,</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="competition.views.results">
+<code class="sig-prename descclassname">competition.views.</code><code class="sig-name descname">results</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.views.results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the GET request on pressing the Progress button on the top right of the main page of the website.</p>
+<p>First the status of the user for each question is displayed. These include “Not Attempted”, “Passed”, “Failed”
+Then the points acquired by each of the registered user is displayed in the decreasing order of the points acquired.
+:param A GET request requesting the Progress of the user:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A html page that has entire progress displayed.(competition/results.html)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="competition.views.runcode">
+<code class="sig-prename descclassname">competition.views.</code><code class="sig-name descname">runcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.views.runcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request from the competition/openquestion.html on pressing the run button.</p>
+<p>See codes app and coding app for the compilation details
+:param A POST request and a string which is the identifier for the question for which the solution is being run.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns by rendering the competition/openquestion.html, but this time with stderr or stdout being shown as an additional textarea.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="competition.views.saveattempt">
+<code class="sig-prename descclassname">competition.views.</code><code class="sig-name descname">saveattempt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.views.saveattempt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request from the competition/openquestion.html on pressing save.</p>
+<p>We first find out whether the user has submitted any solution to the question in the past. If submitted, then we just modify the solution in the database.
+If not, then we create a new solution and save it in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request and a string which is the identifier of the question.</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Based on the final saved solution, the method renders back the competition/openquestion.html with the appropriate code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="competition.views.validate">
+<code class="sig-prename descclassname">competition.views.</code><code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">string</span></em><span class="sig-paren">)</span><a class="headerlink" href="#competition.views.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the GET/POST requests for validation.</p>
+<p>This is a secret function which the users will not know.
+Validation happens by checking each of the test cases from the CorrectSolutions table.
+The code will be run in similar manner and the test cases are checked against each of the solutions given by the users.
+:param A GET/POST request:
+:param and a string which is the identifier of the question:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns by rendering the main dashboard of the website</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-competition">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-competition" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">bacilisk_ocde</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Bharat, Chaithanya, Saathwick, Kowndinya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/competition.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

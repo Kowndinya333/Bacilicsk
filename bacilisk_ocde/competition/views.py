@@ -13,12 +13,32 @@ from django.core.files import File
 # Create your views here.
 
 def index(request):
+    """Processes the GET request that is obtained from pressing the Competition link on the left nav-bar of the main page.
+
+    All the questions from the Questionnaire table are extracted, and then it is rendered in competition/index.html but only if the quesiton is active as 
+    decided by the developers.
+    Args:
+        A GET request when pressed the Competition button
+    Returns:
+        Returns by rendering the competition/index.html where all active questions are listed.
+    """
     all_questions=Questionnaire.objects.all()
     return render(request, "competition/index.html",{
         "questions":all_questions
     })
 
 def openquestion(request, string):
+    """Processes the GET request obtained by pressing the link of question from the competition/index.html.
+
+    The question with the given string as identifier is extracted from the Questionnaire table. If there is already a solution submitted by the user, 
+    then the competition/open/string is rendered with the code that the user has submitted earlier.
+    If not submitted user sees an empty field for him to type in his solution.
+
+    Args:
+        The GET request, and a string which is the identifier to the question
+    Returns:
+        Returns by rendering the competition/open/string with appropriate content,
+    """
     question = Questionnaire.objects.get(identifier=string)
     numdays=question.time_limit
     deadline=question.pub_date + datetime.timedelta(days=numdays)
@@ -34,6 +54,16 @@ def openquestion(request, string):
     })
 
 def saveattempt(request, string):
+    """Processes the POST request from the competition/openquestion.html on pressing save.
+
+    We first find out whether the user has submitted any solution to the question in the past. If submitted, then we just modify the solution in the database. 
+    If not, then we create a new solution and save it in the database.
+
+    Args:
+        A POST request and a string which is the identifier of the question.
+    Returns:
+        Based on the final saved solution, the method renders back the competition/openquestion.html with the appropriate code.
+    """
     try:
         question=Questionnaire.objects.get(identifier=string)
         solution=Solution.objects.all().filter(question=question, solver=request.user)
@@ -61,6 +91,14 @@ def saveattempt(request, string):
         })
 
 def runcode(request, string):
+    """Processes the POST request from the competition/openquestion.html on pressing the run button.
+
+    See codes app and coding app for the compilation details
+    Args:
+        A POST request and a string which is the identifier for the question for which the solution is being run.
+    Returns:
+        Returns by rendering the competition/openquestion.html, but this time with stderr or stdout being shown as an additional textarea.
+    """
     question=Questionnaire.objects.get(identifier=string)
     numdays=question.time_limit
     deadline=question.pub_date + datetime.timedelta(days=numdays)
@@ -146,6 +184,16 @@ def runcode(request, string):
             })
 
 def validate(request, string):
+    """Processes the GET/POST requests for validation.
+
+    This is a secret function which the users will not know. 
+    Validation happens by checking each of the test cases from the CorrectSolutions table. 
+    The code will be run in similar manner and the test cases are checked against each of the solutions given by the users.
+    Args:
+        A GET/POST request, and a string which is the identifier of the question
+    Returns:
+        Returns by rendering the main dashboard of the website
+    """
     if request.method=="GET":
         return render(request, "competition/validate.html", {
             "q_identifier":string
@@ -253,6 +301,15 @@ def validate(request, string):
         return render(request, "users/index.html")
 
 def results(request):
+    """Processes the GET request on pressing the Progress button on the top right of the main page of the website.
+
+    First the status of the user for each question is displayed. These include "Not Attempted", "Passed", "Failed"
+    Then the points acquired by each of the registered user is displayed in the decreasing order of the points acquired.
+    Args:
+        A GET request requesting the Progress of the user
+    Returns:
+        A html page that has entire progress displayed.(competition/results.html)
+    """
     questions=Questionnaire.objects.all()
     status=list()
     for question in questions:

@@ -8,6 +8,14 @@ from django.db.models.fields.related import ForeignKey
 from django.utils import timezone
 # Create your models here.
 class Questionnaire(models.Model):
+    """Class that represents the table "Questionnaire" in the database.
+
+    Attributes:
+        question_text: The description of the question
+        pub_date: The date of publication of the question
+        time_limit: The integer which is the time_limit to solve the question in days.
+        identifier: The unique identifier that identifies with the particular question in the table
+    """
     question_text=models.CharField(max_length=200)
     pub_date=models.DateTimeField('date published')
     time_limit=models.IntegerField(default=1)
@@ -25,6 +33,15 @@ class Questionnaire(models.Model):
     
 
 class Solution(models.Model):
+    """Class that represents the table "Solution" in the database.
+
+    Attributes:
+        question: the question for which the given entry is a solution
+        code: the actual code which is the solution of the question
+        lang: the programming language of the code written
+        solver: the user that gave the solution
+        is_Correct: it is 'P' if pending, 'Y' if correct, 'N' if incorrect.
+    """
     LANGUAGES=(
         ('C', 'C++'),
         ('P', 'Python'),
@@ -37,6 +54,17 @@ class Solution(models.Model):
     is_Correct=models.CharField(max_length=1, default='P')
 
 class CorrectSolution(models.Model):
+    """Class that represents the table "CorrectSolution" in the table.
+
+    Attributes:
+        question: question for which the solution is a correct solution to.
+        input1:test case input1
+        output1:test case output1
+        input2:test case input2
+        output2: test case output2
+        input3: test case input3
+        output3: test case output3
+    """
     question=ForeignKey(Questionnaire, on_delete=models.CASCADE, related_name="relatedq")
     input1=models.TextField(blank=True, default=None)
     output1=models.TextField(default=None)

@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth import get_user_model
 # Create your models here.
 class Code(models.Model):
+    """class that represents the table "Code" in the database.
+
+    Attributes:
+        name: name of the file as decided by the user
+        lang: programming language in which the code is written
+        code: the actual code
+        coder: points to the user who stores the code in database.
+    """
     LANGUAGES=(
         ('C', 'C++'),
         ('P', 'Python'),

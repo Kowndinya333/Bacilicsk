@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>users package &#8212; bacilisk_ocde 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="users-package">
+<h1>users package<a class="headerlink" href="#users-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="users.migrations.html">users.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.migrations.html#module-users.migrations.0001_initial">users.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.migrations.html#module-users.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-users.admin">
+<span id="users-admin-module"></span><h2>users.admin module<a class="headerlink" href="#module-users.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-users.apps">
+<span id="users-apps-module"></span><h2>users.apps module<a class="headerlink" href="#module-users.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="users.apps.UsersConfig">
+<em class="property">class </em><code class="sig-prename descclassname">users.apps.</code><code class="sig-name descname">UsersConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.apps.UsersConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="users.apps.UsersConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'users'</em><a class="headerlink" href="#users.apps.UsersConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-users.models">
+<span id="users-models-module"></span><h2>users.models module<a class="headerlink" href="#module-users.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="users.models.MyUser">
+<em class="property">class </em><code class="sig-prename descclassname">users.models.</code><code class="sig-name descname">MyUser</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.models.MyUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Class that stores the subscription information of the user.</p>
+<dl class="py attribute">
+<dt id="users.models.MyUser.Paid_User">
+<code class="sig-name descname">Paid_User</code><a class="headerlink" href="#users.models.MyUser.Paid_User" title="Permalink to this definition">¶</a></dt>
+<dd><p>It is ‘Y’ if the user is subscribed and ‘N’ if not</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">relatedUser&quot;</code></dt>
+<dd><p>It points to which user we are speaking of</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="users.models.MyUser.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#users.models.MyUser.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="users.models.MyUser.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#users.models.MyUser.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">Paid_User</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="users.models.MyUser.STATUS">
+<code class="sig-name descname">STATUS</code><em class="property"> = (('Y', 'Yes'), ('N', 'No'))</em><a class="headerlink" href="#users.models.MyUser.STATUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="users.models.MyUser.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#users.models.MyUser.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="users.models.MyUser.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#users.models.MyUser.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="users.models.MyUser.relatedUser">
+<code class="sig-name descname">relatedUser</code><a class="headerlink" href="#users.models.MyUser.relatedUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="users.models.MyUser.relatedUser_id">
+<code class="sig-name descname">relatedUser_id</code><a class="headerlink" href="#users.models.MyUser.relatedUser_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-users.tests">
+<span id="users-tests-module"></span><h2>users.tests module<a class="headerlink" href="#module-users.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-users.urls">
+<span id="users-urls-module"></span><h2>users.urls module<a class="headerlink" href="#module-users.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-users.views">
+<span id="users-views-module"></span><h2>users.views module<a class="headerlink" href="#module-users.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="users.views.index">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main webpage rendering</p>
+<p>The first function that is called when someone initiates the website.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – takes in GET request as an argument</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If the current user who opened that website already has a session with the user already logged in, then
+renders the main dashboard of website whose code resides in users/index.html.
+Else if the current user is not logged in, then we call login_view method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="users.views.login_view">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">login_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.login_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages GET/POST requests related to login</p>
+<p>A GET request to this method is made when redirected by index function.
+A POST request to this method is made when some user presses login button from the users/login.html page.
+Checks for errors in login info given by the user. If there is error, redirects again to login page, along with
+displaying the message “Invalid Credentials”. If the login details are valid, then the user is logged in and the homepage is rendered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET/POST request</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns either a Http Redirect to the login page or a rendering of the main homepage of the website.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="users.views.logout_view">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">logout_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.logout_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logout function</p>
+<p>Manages logout request. Logs out the user and returns the login page again</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request for logout_view</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The login page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="users.views.profile">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">profile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when GET request to view profile is made.</p>
+<p>Calls subscription_status function to know if the user is signed up for Basic plan or Premium plan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>GET request</strong> (<em>A</em>) – </p></li>
+<li><p><strong>profile of user</strong> (<em>requesting</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A html page(users/profile.html), that displays the basic details of the user along with which type of subscription he/she has.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="users.views.signup_view">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">signup_view</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.signup_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manages signup requests(GET/POST)</p>
+<p>Based on whether the request type is GET or POST, different pages are rendered.
+If the request is GET type, then signup html page given by users/signup.html is rendered
+Else if the request is POST type, there is some error checking in the details provided by user for registration
+and if there are no errors then user is registered in the users database. Then the user is redirected to login page to further use the
+services provided by the website.The method is also responsible for creating a separate folder for the user in a directory named files which will
+later be used to serve the user many features. The method also adds an entry in the myUser table defined in users/models.py, with a default value for
+the subscription_status to be of Basic. The ;method also creates two files in the directory created above in the name of the user with names being,
+template.cpp and template.py</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET/POST request</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Based on the request type and error checking, either login page is rendered, or signup page is rendered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="users.views.subcription_status">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">subcription_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.subcription_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether user is subscribed to code directory or not</p>
+<p>Uses the present request and finds if the respective user is subscribed or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – the present request at any point</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Boolean value. Returns true if the current user sending the request is subscribed to code directory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="users.views.subscribe">
+<code class="sig-prename descclassname">users.views.</code><code class="sig-name descname">subscribe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscirbe requests is handled</p>
+<p>This function is called when the user presses the button for payment to upgrade to premium plan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request to the function</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The method opens the myuser table to change the entry corresponding user’s paid status to yes, i.e., subsribed to premium plan.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-users">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-users" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">bacilisk_ocde</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Bharat, Chaithanya, Saathwick, Kowndinya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/users.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codes package &#8212; bacilisk_ocde 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="codes-package">
+<h1>codes package<a class="headerlink" href="#codes-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codes.migrations.html">codes.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codes.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codes.migrations.html#module-codes.migrations.0001_initial">codes.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codes.migrations.html#module-codes.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codes.admin">
+<span id="codes-admin-module"></span><h2>codes.admin module<a class="headerlink" href="#module-codes.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codes.apps">
+<span id="codes-apps-module"></span><h2>codes.apps module<a class="headerlink" href="#module-codes.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="codes.apps.CodesConfig">
+<em class="property">class </em><code class="sig-prename descclassname">codes.apps.</code><code class="sig-name descname">CodesConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.apps.CodesConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="codes.apps.CodesConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'codes'</em><a class="headerlink" href="#codes.apps.CodesConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-codes.models">
+<span id="codes-models-module"></span><h2>codes.models module<a class="headerlink" href="#module-codes.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="codes.models.Code">
+<em class="property">class </em><code class="sig-prename descclassname">codes.models.</code><code class="sig-name descname">Code</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.models.Code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>class that represents the table “Code” in the database.</p>
+<dl class="py attribute">
+<dt id="codes.models.Code.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#codes.models.Code.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the file as decided by the user</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.lang">
+<code class="sig-name descname">lang</code><a class="headerlink" href="#codes.models.Code.lang" title="Permalink to this definition">¶</a></dt>
+<dd><p>programming language in which the code is written</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.code">
+<code class="sig-name descname">code</code><a class="headerlink" href="#codes.models.Code.code" title="Permalink to this definition">¶</a></dt>
+<dd><p>the actual code</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.coder">
+<code class="sig-name descname">coder</code><a class="headerlink" href="#codes.models.Code.coder" title="Permalink to this definition">¶</a></dt>
+<dd><p>points to the user who stores the code in database.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="codes.models.Code.DoesNotExist">
+<em class="property">exception </em><code class="sig-name descname">DoesNotExist</code><a class="headerlink" href="#codes.models.Code.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.LANGUAGES">
+<code class="sig-name descname">LANGUAGES</code><em class="property"> = (('C', 'C++'), ('P', 'Python'), ('J', 'Java'))</em><a class="headerlink" href="#codes.models.Code.LANGUAGES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt id="codes.models.Code.MultipleObjectsReturned">
+<em class="property">exception </em><code class="sig-name descname">MultipleObjectsReturned</code><a class="headerlink" href="#codes.models.Code.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id0">
+<code class="sig-name descname">code</code><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id1">
+<code class="sig-name descname">coder</code><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.coder_id">
+<code class="sig-name descname">coder_id</code><a class="headerlink" href="#codes.models.Code.coder_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="codes.models.Code.get_lang_display">
+<code class="sig-name descname">get_lang_display</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">field=&lt;django.db.models.fields.CharField: lang&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#codes.models.Code.get_lang_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#codes.models.Code.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id2">
+<code class="sig-name descname">lang</code><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="id3">
+<code class="sig-name descname">name</code><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="codes.models.Code.objects">
+<code class="sig-name descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#codes.models.Code.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-codes.tests">
+<span id="codes-tests-module"></span><h2>codes.tests module<a class="headerlink" href="#module-codes.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codes.urls">
+<span id="codes-urls-module"></span><h2>codes.urls module<a class="headerlink" href="#module-codes.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codes.views">
+<span id="codes-views-module"></span><h2>codes.views module<a class="headerlink" href="#module-codes.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="codes.views.deletecode">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">deletecode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.deletecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes Delete code file request</p>
+<p>The method retrieves the Code object from the Code database that corresponds to the file name passed as an
+argument and then deletes the file. Finally the user is redirected to codes/showcodes.html</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request and a file name which has to be removed from the database.</strong> (<em>GET</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A HttpResponseRedirect to the codes/showcodes.html page with the updated list after deleting this file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.practice">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.practice" title="Permalink to this definition">¶</a></dt>
+<dd><p>To process the GET request on pressing the Practice link from the left navigation bar of the homepage.</p>
+<p>It renders codes/practice.html containing a html form for the user to code, save and practice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request requested from the left navigation bar.</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>It renders codes/practice.html that has a form for user to enter code and run in three programming languages-C++, Java, Python</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.runcode">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">runcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.runcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compilation and execution of the code</p>
+<p>The method is triggered when the user presses run on the showcodes.html page.It takes as argument, the file name. Hence,
+retrieves the code object from the Code table corresponding to the file name and the current user. It then checks the language of the file.
+According to the language of the code file, it runs the corresponding code. It uses subprocess module to compile and execute the code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request and file name</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>It renders back the codes/showcode/file but this time with compile error, if there is one or stdout of the process, if there is one.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.savecode">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">savecode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.savecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the request from the “Save” link from the codes/practice.html</p>
+<p>Takes in the inputs from the form. Uses a try-except block to check the validity of the form data and renders the codes/practice.html with
+the supporting error message, if any error in the form data is found. If everything is fine, then the form data is stored into the Code table
+with the coder being the current user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request from the practice page.</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the codes/practice.html if with an error, if the form data is wrong and with just the saved code, if the form data is succesfully stored into the database.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.showcode">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">showcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.showcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processing GET request from the code file links from the codes/showcodes.html</p>
+<p>Reminds the user if already in Premium plan and displays message if desired to use code directory structure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<em>GET</em>) – </p></li>
+<li><p><strong>with the file name that wants to be retrieved</strong> (<em>along</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns a html page, ‘codes/showcode.html’, along with any message that is passed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.showcodes">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">showcodes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.showcodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>To display all the saved codes from the database corresponding to the user requesting it.</p>
+<p>If the user is subscribed to the premium plan, then the user is reminded of it with the string stored in the variable submessage, statnding for
+subscription_message.
+The method then retrieves all the entries in the Code table that have the current user as the coder and a list of Code objects is generated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request requesting the codes written by the current user.</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Renders the HTML page, codes/showcodes.html with the list of all codes that the user has stored in the database.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.subcription_status">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">subcription_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.subcription_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether user is subscribed to code directory or not</p>
+<p>Uses the present request and finds if the respective user is subscribed or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – the present request at any point</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A Boolean value. Returns true if the current user sending the request is subscribed to code directory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codes.views.updatecode">
+<code class="sig-prename descclassname">codes.views.</code><code class="sig-name descname">updatecode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em>, <em class="sig-param"><span class="n">file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codes.views.updatecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes update request to the code of an already existing code object in Code table</p>
+<p>This is triggered when the user changes the code from the codes/showcode.html page and presses save.
+The updated code is obtained from the form that exists in the codes/showcode.html page. The code object corresponding to the
+user and the file name given as arguments. THe code is then updated and saved. Finally user is redirected to the page showing the updated code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request and file name of the file being modified.</strong> (<em>GET</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>HttpResponseRedirect to the codes/showcode/file which displays the updated code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-codes" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">bacilisk_ocde</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Bharat, Chaithanya, Saathwick, Kowndinya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/codes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

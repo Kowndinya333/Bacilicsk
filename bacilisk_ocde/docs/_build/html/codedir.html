@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>codedir package &#8212; bacilisk_ocde 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="codedir-package">
+<h1>codedir package<a class="headerlink" href="#codedir-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="codedir.migrations.html">codedir.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codedir.migrations.html#module-codedir.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codedir.admin">
+<span id="codedir-admin-module"></span><h2>codedir.admin module<a class="headerlink" href="#module-codedir.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codedir.apps">
+<span id="codedir-apps-module"></span><h2>codedir.apps module<a class="headerlink" href="#module-codedir.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="codedir.apps.CodedirConfig">
+<em class="property">class </em><code class="sig-prename descclassname">codedir.apps.</code><code class="sig-name descname">CodedirConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.apps.CodedirConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="codedir.apps.CodedirConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'codedir'</em><a class="headerlink" href="#codedir.apps.CodedirConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-codedir.models">
+<span id="codedir-models-module"></span><h2>codedir.models module<a class="headerlink" href="#module-codedir.models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codedir.tests">
+<span id="codedir-tests-module"></span><h2>codedir.tests module<a class="headerlink" href="#module-codedir.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codedir.urls">
+<span id="codedir-urls-module"></span><h2>codedir.urls module<a class="headerlink" href="#module-codedir.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-codedir.views">
+<span id="codedir-views-module"></span><h2>codedir.views module<a class="headerlink" href="#module-codedir.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="codedir.views.deletefile">
+<code class="sig-prename descclassname">codedir.views.</code><code class="sig-name descname">deletefile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.views.deletefile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request when delete file button is pressed on codedir/index.html</p>
+<p>It obtains the present path which is a part of the form in codedir/index.html. Unlike deleting folders, it is sufficient to
+delete the file(No subfolders or anything like that). Then user is directed to index of the codedir app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request from codedir/index.html</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns HttpResponseRedirect to the path initially started from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codedir.views.deletefolder">
+<code class="sig-prename descclassname">codedir.views.</code><code class="sig-name descname">deletefolder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.views.deletefolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request when delete folder button is pressed on codedir/index.html</p>
+<p>It obtains the present path which is a part of the form in codedir/index.html. Since we need to remove all the inner subfolders also, we use the shutil.rmtree(path)
+functionality of the python. This removes the directory along with all the subfolders. Then user is directed to index of the codedir app.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request from codedir/index.html</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns HttpResponseRedirect to the path initially started from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codedir.views.index">
+<code class="sig-prename descclassname">codedir.views.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the GET request on pressing the ‘MyFolder” link on the left nav bar on the webpage</p>
+<p>If the user is unsubscribed to the code directory(i.e., user is in Basic plan), then we render codedir/unsubscribed.html
+Else if user is subscribed to the premium plan, then we open the special directory of the user that is created when the registration of user happens.
+Using os.listdir(path) we obtain the list of contents of the current path. Then we separate all dirs from files. Finally we render codedir/index.html along
+with passing the lists that we just obtained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request requesting the Folder structure of the user.</strong> (<em>GET</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The method returns rendering a html page- codedir/index.html with two lists passed to it by the method. These are nothing but the separate lists of
+directories and files. We also pass a variable path, which denotes the present path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codedir.views.newfile">
+<code class="sig-prename descclassname">codedir.views.</code><code class="sig-name descname">newfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.views.newfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request when new File button is pressed on codedir/index.html</p>
+<p>It obtains the present path which is a part of the form in codedir/index.html. The new file is created using open() functionality of python. After that,
+user is redirected to the directory in which the new file is created. The user will directly be able to see the new file just created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request for new file</strong> (<em>The</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns HttpResponseRedirect to the path initially started from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codedir.views.newfolder">
+<code class="sig-prename descclassname">codedir.views.</code><code class="sig-name descname">newfolder</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.views.newfolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the GPOST request when new Folder button is pressed on codedir/index.html</p>
+<p>It obtains the present path which is a part of the form in codedir/index.html. the new folder is created using os.mkdir(). After that, user is redirected to the
+directory in which the new folder is created..the user will directly be able to see the new folder just created.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request for new folder.</strong> (<em>The</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns HttpResponseRedirect to the path initially started from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="codedir.views.parsepath">
+<code class="sig-prename descclassname">codedir.views.</code><code class="sig-name descname">parsepath</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedir.views.parsepath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the GET request from pressing the links of folders/files from codedir/index.html</p>
+<p>There is form actually instead of just a button, in the codedir/index.html. There exists a hidden component in the form which is not visible to the user.
+this stores a string which denotes the path that we will be led to, when we press the link of that particular directory, or file. So, when user presses the button
+corresponding to the directory/file, we POST the path to which we should go also. So, the method first retrieves that path.
+THen uses os.listdir on this path to find the contents of that path. Similar to index function, we create lists and render the codedir/index.html but with this
+updated data instead. But all this is when we press on a link which is a directory. If it is a file, we render coding/index.html that displays the code, and options to
+run etc…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request that is obtained on pressing links on codedir/index.html</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reutrns appropriate html pages, based on whether we press the links of direcoried or files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-codedir">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-codedir" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">bacilisk_ocde</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Bharat, Chaithanya, Saathwick, Kowndinya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/codedir.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

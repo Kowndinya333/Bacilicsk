@@ -7,11 +7,31 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
+    """Processes GET request on pressing a link of a file from the code directory structure
+
+    Returns the Html page coding/index.html
+
+    Args:
+        A GET request from the index of the codedir app
+    Returns:
+        Renders a html page coding/index.html
+    """
     return render(request, "coding/index.html", {
         "code":"Your code here"
     })
 
 def savecode(request):
+    """Processes the POST request from the index of the coding app.(The file which is open right now from the codedir app)
+
+    The method extracts codetext, and filepath from the POST request and then writes it to the file located in the filepath.
+    And the user is taken to the coding/index.html page but this time with altered data, with code being the codetext that was just saved in the 
+    given filepath.
+
+    Args:
+        POST Request from the index of the coding app.
+    Returns:
+        Returns rendering the html page - coding/index.html along with passing the necessary data
+    """
     codetext=request.POST["codetext"]
     filepath=request.POST["filepath"]
     fhand=open(filepath, "w+")
@@ -22,6 +42,19 @@ def savecode(request):
     })
 
 def runcode(request):
+    """Processes the POST request from pressing the run button on coding/index.html
+
+    The method extracts codetext, and filepath from the POST request. It also extracts the inputs from the POST request. 
+    After that, based on the extension of the file, the programming language is decided..Now, in the same way as for the codes app, the code
+    is executed using the subprocess module. In case of java, little more work is done as the file name and the class name should be the same.
+    The user is taken back to where he started but this time with an additional text which may be either stderr, if there is a compile error. 
+    If there is any stdout, then it is rendered in the same html page.
+
+    Args:
+        The POST request from the coding/index.html
+    Reuturns:
+        The same html page from where we ran the program, is rendered, but now with an additional information
+    """
     filepath=request.POST["filepath"]
     input_data=request.POST["input_data"]
     inputs=bytes(input_data, "UTF-8")

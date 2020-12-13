@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coding package &#8212; bacilisk_ocde 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="coding-package">
+<h1>coding package<a class="headerlink" href="#coding-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="coding.migrations.html">coding.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coding.migrations.html#module-coding.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coding.admin">
+<span id="coding-admin-module"></span><h2>coding.admin module<a class="headerlink" href="#module-coding.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coding.apps">
+<span id="coding-apps-module"></span><h2>coding.apps module<a class="headerlink" href="#module-coding.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="coding.apps.CodingConfig">
+<em class="property">class </em><code class="sig-prename descclassname">coding.apps.</code><code class="sig-name descname">CodingConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">app_name</span></em>, <em class="sig-param"><span class="n">app_module</span></em><span class="sig-paren">)</span><a class="headerlink" href="#coding.apps.CodingConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="coding.apps.CodingConfig.name">
+<code class="sig-name descname">name</code><em class="property"> = 'coding'</em><a class="headerlink" href="#coding.apps.CodingConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-coding.models">
+<span id="coding-models-module"></span><h2>coding.models module<a class="headerlink" href="#module-coding.models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coding.tests">
+<span id="coding-tests-module"></span><h2>coding.tests module<a class="headerlink" href="#module-coding.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coding.urls">
+<span id="coding-urls-module"></span><h2>coding.urls module<a class="headerlink" href="#module-coding.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-coding.views">
+<span id="coding-views-module"></span><h2>coding.views module<a class="headerlink" href="#module-coding.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="coding.views.index">
+<code class="sig-prename descclassname">coding.views.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#coding.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes GET request on pressing a link of a file from the code directory structure</p>
+<p>Returns the Html page coding/index.html</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>GET request from the index of the codedir app</strong> (<em>A</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Renders a html page coding/index.html</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="coding.views.runcode">
+<code class="sig-prename descclassname">coding.views.</code><code class="sig-name descname">runcode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#coding.views.runcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request from pressing the run button on coding/index.html</p>
+<p>The method extracts codetext, and filepath from the POST request. It also extracts the inputs from the POST request.
+After that, based on the extension of the file, the programming language is decided..Now, in the same way as for the codes app, the code
+is executed using the subprocess module. In case of java, little more work is done as the file name and the class name should be the same.
+The user is taken back to where he started but this time with an additional text which may be either stderr, if there is a compile error.
+If there is any stdout, then it is rendered in the same html page.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>POST request from the coding/index.html</strong> (<em>The</em>) – </p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reuturns:</dt><dd><p>The same html page from where we ran the program, is rendered, but now with an additional information</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="coding.views.savecode">
+<code class="sig-prename descclassname">coding.views.</code><code class="sig-name descname">savecode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#coding.views.savecode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the POST request from the index of the coding app.(The file which is open right now from the codedir app)</p>
+<p>The method extracts codetext, and filepath from the POST request and then writes it to the file located in the filepath.
+And the user is taken to the coding/index.html page but this time with altered data, with code being the codetext that was just saved in the
+given filepath.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Request from the index of the coding app.</strong> (<em>POST</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns rendering the html page - coding/index.html along with passing the necessary data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-coding">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-coding" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">bacilisk_ocde</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Bharat, Chaithanya, Saathwick, Kowndinya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/coding.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
